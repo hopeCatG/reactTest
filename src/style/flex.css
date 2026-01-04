@@ -1,0 +1,197 @@
+
+/* ==================
+          布局
+ ==================== */
+ /*  -- grid弹性布局 -- */
+
+.grid-2{
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+}
+.grid-3{
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+}
+.grid-4{
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+.grid-xs{
+	grid-gap: 20rpx;
+}
+
+/*  -- flex弹性布局 -- */
+
+.flex {
+	display: flex;
+}
+
+
+
+.basis-xs {
+	flex-basis: 20%;
+}
+
+.basis-sm {
+	flex-basis: 40%;
+}
+
+.basis-df {
+	flex-basis: 50%;
+}
+
+.basis-lg {
+	flex-basis: 60%;
+}
+
+.basis-xl {
+	flex-basis: 80%;
+}
+
+.flex-sub {
+	flex: 1;
+}
+
+.flex-twice {
+	flex: 2;
+}
+
+.flex-treble {
+	flex: 3;
+}
+
+
+.flex-init {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.flex-init-start {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+.flex-init-end {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+.flex-init-sb {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.flex-init-sa {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.flex-init-c {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.flex-init-c-sb {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-direction: column;
+}
+
+.flex-init-c-start {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	flex-direction: column;
+}
+
+.flex-init-c-end {
+	display: flex;
+	justify-content: flex-start;
+	flex-direction: column;
+}
+
+
+.flex-direction {
+	flex-direction: column;
+}
+
+.flex-wrap {
+	flex-wrap: wrap;
+}
+
+.align-start {
+	align-items: flex-start;
+}
+
+.align-end {
+	align-items: flex-end;
+}
+
+.align-center {
+	align-items: center;
+}
+
+.align-stretch {
+	align-items: stretch;
+}
+
+.self-start {
+	align-self: flex-start;
+}
+
+.self-center {
+	align-self: flex-center;
+}
+
+.self-end {
+	align-self: flex-end;
+}
+
+.self-stretch {
+	align-self: stretch;
+}
+
+.align-stretch {
+	align-items: stretch;
+}
+.align-self-center{
+	align-self: center;
+}
+.justify-start {
+	justify-content: flex-start;
+}
+
+.justify-end {
+	justify-content: flex-end;
+}
+
+.justify-center {
+	justify-content: center;
+}
+
+.justify-between {
+	justify-content: space-between;
+}
+
+.justify-around {
+	justify-content: space-around;
+}
+
+
+
+.text-cut2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    /* 指定要显示的行数 */
+    -webkit-box-orient: vertical;
+    /* 设置为垂直方向排列 */
+    text-overflow: ellipsis;
+    overflow: hidden;
+}

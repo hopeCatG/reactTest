@@ -2,6 +2,10 @@ import { PropsWithChildren } from 'react'
 import { useLaunch } from '@tarojs/taro'
 
 import './app.scss'
+import './style/flex.css'
+import './style/icon.css' 
+
+
 
 function App({ children }: PropsWithChildren<any>) {
   useLaunch(() => {

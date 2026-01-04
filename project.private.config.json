@@ -2,7 +2,7 @@
   "libVersion": "3.13.1",
   "projectname": "reactTest",
   "setting": {
-    "urlCheck": true,
+    "urlCheck": false,
     "coverView": false,
     "lazyloadPlaceholderEnable": false,
     "skylineRenderEnable": false,
@@ -18,5 +18,18 @@
     "checkInvalidKey": true,
     "ignoreDevUnusedFiles": true,
     "bigPackageSizeSupport": false
+  },
+  "condition": {
+    "miniprogram": {
+      "list": [
+        {
+          "name": "pages/create/image/index",
+          "pathName": "pages/create/image/index",
+          "query": "",
+          "scene": null,
+          "launchMode": "default"
+        }
+      ]
+    }
   }
 }

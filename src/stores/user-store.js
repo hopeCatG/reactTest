@@ -11,7 +11,7 @@ const useUserStore = create((set) => ({
     token: userData.token 
   }),
   
-  logout: () => set({ 
+  logout: () => set({
     userInfo: null, 
     token: '' 
   }),

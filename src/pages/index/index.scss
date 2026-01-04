@@ -1,0 +1,252 @@
+.page-container {
+    position: relative;
+    width: 100%;
+    // height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    overflow: hidden; // 避免页面整体滚动
+}
+
+/* 固定顶部区域 */
+.fixed-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* 滚动主体部分 */
+.page-body {
+    // overflow-y: scroll;
+    box-sizing: border-box;
+    padding: 0 20px 40px;
+    background-color: #FFFFFF;
+
+    /* ---------------- 标题样式 ---------------- */
+    .title {
+        position: relative;
+        font-size: 34px;
+        font-weight: 700;
+        color: #333;
+        margin: 40px 0 30px;
+        padding-left: 20px;
+        display: flex;
+        align-items: center;
+    }
+
+    .title::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 8px;
+        height: 34px;
+        border-radius: 4px;
+        background: linear-gradient(180deg, #4facfe 0%, #00f2fe 100%);
+    }
+
+    .title::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background: #eaeaea;
+    }
+
+    /* ---------------- 模型卡片样式 ---------------- */
+    .lora-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .lora-item {
+        width: 48%;
+        background-color: #fff;
+        border-radius: 16px;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
+        margin-bottom: 24px;
+        overflow: hidden;
+        transition: all 0.2s ease;
+    }
+
+    .lora-item:active {
+        transform: scale(0.98);
+    }
+
+    .lora-logo {
+        width: 100%;
+        height: 220px;
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+    .lora-info {
+        padding: 20px;
+    }
+
+    .lora-name {
+        font-size: 28px;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 8px;
+    }
+
+    .lora-desc {
+        font-size: 24px;
+        color: #888;
+        line-height: 1.4;
+        word-break: break-all;
+    }
+
+
+}
+
+/* ---------------- 图片广场（瀑布流样式） ---------------- */
+.waterfall {
+    column-count: 2;
+    column-gap: 20rpx;
+    padding-bottom: 40rpx;
+}
+
+.waterfall-item {
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 20rpx;
+    background-color: #fff;
+    border-radius: 16rpx;
+    overflow: hidden;
+    box-shadow: 0 6rpx 12rpx rgba(0, 0, 0, 0.08);
+    transition: all 0.25s ease;
+}
+
+.waterfall-item:active {
+    transform: scale(0.98);
+}
+
+.waterfall-img {
+    width: 100%;
+    display: block;
+    border-bottom: 1rpx solid #f0f0f0;
+}
+
+.waterfall-info {
+    padding: 16rpx;
+}
+
+.waterfall-text {
+    font-size: 26rpx;
+    color: #555;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* ---------------- 状态 ---------------- */
+.empty-view {
+    text-align: center;
+    color: #999;
+    font-size: 26rpx;
+    margin-top: 200rpx;
+}
+
+.loading-more,
+.no-more {
+    text-align: center;
+    color: #999;
+    font-size: 26rpx;
+    padding: 20rpx 0;
+}
+
+.waterfall-ad {
+    width: 100%;
+    margin: 20rpx 0;
+    background-color: #fff;
+    border-radius: 16rpx;
+    overflow: hidden;
+}
+
+.logo-box {
+    height: 110px;
+    background: linear-gradient(to right, #43d1fc -18%, #FFFFFF 68%);
+
+    image {
+        margin-left: 40px;
+        width: 200px;
+        height: 60px;
+    }
+}
+
+
+.add-create-box {
+    padding: 0 10px;
+    background: linear-gradient(-20deg, #FFFFFF 67%, #71DCFD 100%);
+}
+
+.add-create {
+    position: relative;
+    width: 100%;
+    height: 240px;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.create-bg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.85);
+}
+
+.create-content {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 0 40px;
+    color: #fff;
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0));
+}
+
+.create-title {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+.create-subtitle {
+    font-size: 26px;
+    opacity: 0.9;
+    margin-bottom: 20px;
+}
+
+.create-btn {
+    display: inline-block;
+    padding: 10px 26px;
+    font-size: 26px;
+    font-weight: 600;
+    background: linear-gradient(90deg, #4facfe, #00f2fe);
+    color: #fff;
+    border-radius: 40px;
+    box-shadow: 0 4px 10px rgba(79, 172, 254, 0.4);
+    transition: all 0.25s ease;
+}
+
+.create-btn:active {
+    transform: scale(0.96);
+    opacity: 0.9;
+}

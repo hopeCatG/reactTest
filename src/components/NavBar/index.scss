@@ -1,0 +1,23 @@
+.nav-box {
+    width: 100vw;
+    background: transparent;
+    position: fixed;
+    padding: 0 20px;
+    left: 0;
+    z-index: 999;
+}
+
+.title {
+    text-align: center;
+    font-family: "PingFang SC";
+    font-size: 34px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.nav-left {
+    // font-weight: 700;
+    font-size: 28px !important;
+}
+

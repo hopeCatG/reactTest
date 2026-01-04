@@ -2,7 +2,7 @@
   "miniprogramRoot": "dist/",
   "projectname": "reactTest",
   "description": "",
-  "appid": "wx1053682af04e6a18",
+  "appid": "wxf9ba2566fdef4a2d",
   "setting": {
     "urlCheck": true,
     "es6": false,
@@ -35,5 +35,6 @@
     "ignore": [],
     "include": []
   },
-  "editorSetting": {}
+  "editorSetting": {},
+  "libVersion": "3.13.1"
 }
