@@ -6,7 +6,6 @@
 
 ![体验二维码](https://cdn.nlark.com/yuque/0/2026/png/34624154/1767601627837-b800a20f-a68b-4740-930a-806e112c6a8c.png?x-oss-process=image%2Fformat%2Cwebp)
 
-- 体验二维码
 
 ## 项目笔记
 - [taro+react 学习](https://www.yuque.com/skyblue-0xatt/df0t8b/hwreog8eaegtdibe?singleDo)
