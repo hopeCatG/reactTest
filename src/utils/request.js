@@ -11,6 +11,7 @@ export const request = async (options) => {
     data: options.data || {},
     header: {
       'Content-Type': 'application/json',
+      'token': Taro.getStorageSync('token') || '',
       ...options.header,
     },
     ...options,

@@ -1,16 +1,20 @@
 @font-face {
   font-family: "iconfont"; /* Project id 5047773 */
-  src: url('//at.alicdn.com/t/c/font_5047773_9ei8wixni1k.woff2?t=1761727552825') format('woff2'),
-       url('//at.alicdn.com/t/c/font_5047773_9ei8wixni1k.woff?t=1761727552825') format('woff'),
-       url('//at.alicdn.com/t/c/font_5047773_9ei8wixni1k.ttf?t=1761727552825') format('truetype');
+  src: url('//at.alicdn.com/t/c/font_5047773_0oo0uuyv6cs.woff2?t=1767594913088') format('woff2'),
+       url('//at.alicdn.com/t/c/font_5047773_0oo0uuyv6cs.woff?t=1767594913088') format('woff'),
+       url('//at.alicdn.com/t/c/font_5047773_0oo0uuyv6cs.ttf?t=1767594913088') format('truetype');
 }
 
 .iconfont {
-  font-family: "iconfont" !important; 
-  font-size: 30px;
+  font-family: "iconfont" !important;
+  font-size: 16px;
   font-style: normal;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale; 
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-shezhi:before {
+  content: "\e643";
 }
 
 .icon-wenhaoxiao:before {

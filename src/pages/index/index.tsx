@@ -85,7 +85,6 @@ export default function Index() {
     }, 200);
   });
 
-
   // 页面加载
   useLoad(() => {
     getModels();
@@ -137,16 +136,15 @@ export default function Index() {
               )
             })
           }
-
         </View>
-
+        
         {/* 官方列表 */}
         <View className="title">图片广场</View>
         <View className="waterfall">
           {
             imageList.map((img) => {
               return (
-                <WaterfallItem timeObj={img} />
+                <WaterfallItem timeObj={img} key={img.id} />
               )
             })
           }
@@ -161,6 +159,5 @@ export default function Index() {
       </View >
       {/* <Button onClick={() => { goWhere('/pages/test/index') }}>跳转测试2</Button> */}
     </View >
-
   );
 }
