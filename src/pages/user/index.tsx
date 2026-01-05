@@ -79,8 +79,7 @@ export default function User() {
                                 <Image className='item-icon' src={getImageUrl(item.image)} mode='aspectFit' />
                                 <Text className='item-text'>{item.name}</Text>
                             </View>
-                            {/* 右箭头，这里用 > 符号代替或者用图标 */}
-                            <Text className='arrow-icon' style={{ fontSize: '20px', color: '#999' }}>{'>'}</Text>
+                            <Text className='arrow-icon iconfont icon-youjiantou' style={{ fontSize: '20px', color: '#999' }}></Text>
                         </View>
                     ))}
                 </View>

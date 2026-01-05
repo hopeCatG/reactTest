@@ -17,7 +17,7 @@ export default function NavBar({
             {/* 左侧插槽 */}
             <View className="nav-left" style={{ color }} onClick={goBack}>
                 {leftSlot || ( // 插槽
-                    <View className="iconfont icon-fanhui1"></View>
+                    <View className="iconfont icon-fanhui1" style={{ fontSize: '30rpx' }}></View>
                 )}
             </View>
 

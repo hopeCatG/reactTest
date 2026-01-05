@@ -3,6 +3,8 @@ import { View, Text, Image, Textarea, Button, Video } from '@tarojs/components'
 import Taro, { useLoad, useRouter } from '@tarojs/taro'
 import { getNavigationBarHeight } from '../../../hooks/useNavigationBarHeight';
 import { useState, useEffect, useRef } from 'react'
+import useUserStore from '../../../stores/user-store'
+
 import NavBar from '../../../components/NavBar'
 import {
     getModelsApi,
@@ -18,6 +20,7 @@ export default function AICreatePage() {
     const router = useRouter()
 
     const { navBarHeight } = getNavigationBarHeight();
+    const { userInfo,getUserCenter } = useUserStore()
 
 
     // 状态管理
@@ -55,8 +58,8 @@ export default function AICreatePage() {
 
     // 初始化
     useLoad(async (options) => {
-
-
+        // 获取用户信息
+        await getUserCenter()
         await getModels()
 
         // 处理路由参数
@@ -111,10 +114,11 @@ export default function AICreatePage() {
     // 获取模型
     const getModels = async () => {
         try {
-            const res = await getModelsApi({ type: 'Checkpoint' })
-            setModelList(res.list || [])
-            if (res.list && res.list.length > 0) {
-                setCurrentModel(res.list[0])
+            const { data } = await getModelsApi({ type: 'Checkpoint' })
+            console.log(data);
+            setModelList(data.list || [])
+            if (data.list && data.list.length > 0) {
+                setCurrentModel(data.list[0])
             }
         } catch (error) {
             console.error('获取模型失败:', error)
@@ -124,8 +128,8 @@ export default function AICreatePage() {
     // 获取LoRA
     const getLoRA = async () => {
         try {
-            const res = await getModelsApi({ type: 'LoRA' })
-            setLoraList(res.list || [])
+            const { data } = await getModelsApi({ type: 'LoRA' })
+            setLoraList(data.list || [])
         } catch (error) {
             console.error('获取LoRA失败:', error)
         }
@@ -134,8 +138,8 @@ export default function AICreatePage() {
     // 获取用户生成图片
     const getUserImages = async () => {
         try {
-            const res = await aiImgUserListApi({ page: 1, pageSize: 10, sort: 'desc' })
-            setImageList(res.list || [])
+            const { data } = await aiImgUserListApi({ page: 1, pageSize: 10, sort: 'desc' })
+            setImageList(data.list || [])
         } catch (error) {
             console.error('获取用户图片失败:', error)
         }
@@ -195,7 +199,9 @@ export default function AICreatePage() {
         try {
             await aiImgCreateApi(data)
             Taro.showToast({ title: '提交成功', icon: 'success' })
-            Taro.switchTab({ url: '/pages/ai/list/index' })
+            setTimeout(() => {
+                Taro.switchTab({ url: '/pages/list/index' })
+            }, 800);
         } catch (error) {
             console.error('生成失败:', error)
         } finally {
@@ -216,18 +222,17 @@ export default function AICreatePage() {
         Taro.showLoading({ title: 'AI生成中' })
 
         try {
-            const res = await aiPrpmptPolish({
+            const {data} = await aiPrpmptPolish({
                 type: 'textToImg',
                 query: prompt,
-                inputs: {},
-                // user: userInfo?.id || 'user00',
+                inputs: {},  
+                user: userInfo?.id || 'user00',
                 response_mode: 'blocking',
                 conversation_id: conversationId
             })
 
-            setPrompt(res.answers.prompt || prompt)
-            setNegativePrompt(res.answers?.negativePrompt || negativePrompt)
-            setConversationId(res.conversation_id || conversationId)
+            setPrompt(data.answers.prompt || prompt)
+            setNegativePrompt(data.answers?.negativePrompt || negativePrompt)
         } catch (error) {
             console.error('润色失败:', error)
         } finally {
@@ -350,13 +355,13 @@ export default function AICreatePage() {
 
 
 
-            <View className='page-header'>
+            {/* <View className='page-header'>
                 <Text className='title'>我的图片</Text>
                 <Text className='subtitle'>历史列表</Text>
-            </View>
+            </View> */}
 
             {/* 生成结果 */}
-            <View className='result-box'>
+            {/* <View className='result-box'>
                 {imageList.length === 0 ? (
                     <View className='empty-tip'>暂无生成记录</View>
                 ) : (
@@ -372,7 +377,7 @@ export default function AICreatePage() {
                         ))}
                     </View>
                 )}
-            </View>
+            </View> */}
 
             {/* 视频教程模态框 */}
             {showVideoModal && (

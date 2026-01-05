@@ -11,14 +11,16 @@ const useUserStore = create((set) => ({
     set({
       userInfo: userData,
       token: userData.token
-    }) 
+    })
   },
   getUserCenter: async () => {
-    const res = await getUserCenter() 
-    if(res.code === 1 ){
+    const res = await getUserCenter()
+    if (res.code === 1 && res.data?.id) {
       set({
         userInfo: res.data
       })
+    } else {
+      Taro.removeStorageSync('token')
     }
   },
   logout: () => {
@@ -28,8 +30,8 @@ const useUserStore = create((set) => ({
       token: ''
     })
   },
-  isLogin: () => { 
-   return Taro.getStorageSync('token') != ''
+  isLogin: () => {
+    return Taro.getStorageSync('token') != ''
   },
   updateAvatar: (avatarUrl) =>
     set((state) => ({
