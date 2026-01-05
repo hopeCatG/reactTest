@@ -3,6 +3,10 @@
 ## 项目说明
 
 - taro+react 学习
+- 体验二维码
+![体验二维码](https://cdn.nlark.com/yuque/0/2026/png/34624154/1767601627837-b800a20f-a68b-4740-930a-806e112c6a8c.png?x-oss-process=image%2Fformat%2Cwebp)
+## 项目笔记
+- [taro+react 学习](https://www.yuque.com/skyblue-0xatt/df0t8b/hwreog8eaegtdibe?singleDo)
 
 ## 项目说明
 
@@ -93,7 +97,5 @@ reactTest/
 - 新增页面：在 src/pages 下创建目录并新增 index.tsx、index.scss、index.config.ts，同时在 src/app.config.ts 的 pages 中注册
 - 新增接口：在 src/api 下添加对应方法，内部调用 src/utils/request.js 的快捷方法
 
-## 项目笔记
 
-- [taro+react 学习](https://www.yuque.com/skyblue-0xatt/df0t8b/hwreog8eaegtdibe?singleDo)
 

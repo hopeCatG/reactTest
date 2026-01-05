@@ -138,11 +138,13 @@ export default function AIListPage() {
 
     // 页面显示时加载
     useDidShow(() => {
+        console.log('useDidShow')
+        getUserImages(false)
         setParam(prev => ({ ...prev, page: 1 }))
         setImgList([])
         setColumns([[], []])
         setNoMore(false)
-        getUserImages(false)
+        
     })
 
     // 上拉加载更多
