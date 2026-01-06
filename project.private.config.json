@@ -23,11 +23,18 @@
     "miniprogram": {
       "list": [
         {
-          "name": "pages/create/image/index",
-          "pathName": "pages/create/image/index",
+          "name": "pages/test/index",
+          "pathName": "pages/test/index",
           "query": "",
           "scene": null,
           "launchMode": "default"
+        },
+        {
+          "name": "pages/create/image/index",
+          "pathName": "pages/create/image/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         },
         {
           "name": "pages/login/index",

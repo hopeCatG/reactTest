@@ -5,6 +5,7 @@ import Taro from '@tarojs/taro'
 import { deleteImgApi } from '../../api/ai'
 import './index.scss'
 
+
 export default function WaterfallItem({
     timeObj = { result_url: '', prompt: '' } as any,
     isUser = false,
@@ -16,7 +17,7 @@ export default function WaterfallItem({
     const [showPreview, setShowPreview] = useState(false)
     const [showDetail, setShowDetail] = useState(false)
     const [img, setImg] = useState('')
-
+    const lodingImg = 'https://box-1259309383.cos.ap-beijing.myqcloud.com/uploads/images/20260106/20260106133909d90415378.webp';
     // 切换按钮显示
     const toggleButtons = () => {
         setShowBtns(true)
@@ -127,7 +128,7 @@ export default function WaterfallItem({
                 <View className="img-box" onClick={toggleButtons}>
                     <Image
                         className="waterfall-img"
-                        src={timeObj?.result_url || require('@/static/images/icon/loding.webp')}
+                        src={timeObj?.result_url || lodingImg}
                         mode="widthFix"
                     />
 

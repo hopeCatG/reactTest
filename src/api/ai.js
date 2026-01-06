@@ -1,4 +1,3 @@
-// api/user.js
 import { get, post, put, del } from '../utils/request';
 
 // 获取模型列表

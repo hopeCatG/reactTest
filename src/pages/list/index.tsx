@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
 import { View, Image, Text, Button } from '@tarojs/components'
-import Taro, { useDidShow, useReachBottom, useDidHide } from '@tarojs/taro'
+import Taro, { useDidShow, useReachBottom, useDidHide ,useLoad} from '@tarojs/taro'
 import WaterfallItem from '../../components/WaterfallItem'
 import { getNavigationBarHeight } from '../../hooks/useNavigationBarHeight';
 
@@ -65,18 +65,21 @@ export default function AIListPage() {
     const splitColumns = useCallback((list = imgList) => {
         const left = [] as any;
         const right = [] as any;
-
         list.forEach((item, index) => {
             // 按高度分配（这里简化按数量分配）
             if (left.length <= right.length) {
                 left.push(item)
             } else {
-                right.push(item)
+                right.push(item) 
             }
         })
 
         setColumns([left, right])
     }, [imgList])
+
+    useEffect(() => {
+        splitColumns(imgList)
+    }, [imgList, splitColumns])
 
     // 删除图片
     const handleDeleted = useCallback((deletedId) => {
@@ -92,7 +95,12 @@ export default function AIListPage() {
         setLoading(true)
 
         try {
-            const { data } = await aiImgUserListApi(param)
+            // 计算本次请求的参数，避免使用状态中的过期值
+            const reqParam = isAdd ? param : { ...param, page: 1 }
+            if (!isAdd) {
+                setParam(prev => ({ ...prev, page: 1 }))
+            }
+            const { data } = await aiImgUserListApi(reqParam)
             const list = data?.list || []
 
             if (list.length === 0) {
@@ -122,12 +130,8 @@ export default function AIListPage() {
                 // 分割列
                 splitColumns(newList)
 
-                // 更新页码
-                if (isAdd) {
-                    setParam(prev => ({ ...prev, page: prev.page + 1 }))
-                } else {
-                    setParam(prev => ({ ...prev, page: 2 }))
-                }
+                // 更新页码（基于本次请求的参数计算下一页）
+                setParam(prev => ({ ...prev, page: (isAdd ? prev.page : reqParam.page) + 1 }))
             }
         } catch (error) {
             console.error('获取图片列表失败:', error)
@@ -138,13 +142,15 @@ export default function AIListPage() {
 
     // 页面显示时加载
     useDidShow(() => {
-        console.log('useDidShow')
-        getUserImages(false)
         setParam(prev => ({ ...prev, page: 1 }))
         setImgList([])
         setColumns([[], []])
         setNoMore(false)
-        
+        getUserImages(false)
+    })
+
+    useLoad(() => {
+        console.log('useLoad')
     })
 
     // 上拉加载更多

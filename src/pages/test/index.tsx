@@ -1,5 +1,5 @@
 import { View, Text, Button } from '@tarojs/components';
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import { useLoad } from '@tarojs/taro'
 import CounterButton from '../../components/CounterButton';
 
@@ -21,6 +21,24 @@ export default function Index() {
     { id: 2, name: '项目二' },
     { id: 3, name: '项目三' }
   ]
+
+  const [newCount, setNewCount] = useState(0);
+  const showCount = () => {
+    console.log('Count:', newCount) // 闭包陷阱：count 永远是初始值
+  } // 缺少 count 依赖
+
+  // 增加 newCount
+  const addNewcount = () => {
+    setNewCount(newCount + 1)
+    console.log('直接打印',newCount)
+    showCount()
+  }
+
+  // ✅ 正确的依赖
+  // const showCount = useCallback(() => {
+  //   console.log('Count:', count)
+  // }, [count])
+
 
   useLoad(() => {
     console.log('Page loaded.');
@@ -80,7 +98,10 @@ export default function Index() {
           </View>
         ))
       }
-      
+
+      <Button onClick={addNewcount}>useCallback</Button>
+      <Text>newCount: {newCount}</Text>
+
     </View>
   );
 }
