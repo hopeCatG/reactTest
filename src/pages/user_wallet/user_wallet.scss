@@ -1,11 +1,12 @@
 .page-container {
+    background-color: #F6F6F6;
+    height: 100vh;
     box-sizing: border-box;
-    width: 100%;
-    height: 100%;
+    .user-wallet-container{
+        padding: 20px;
+    }
     .user-wallet {
-        box-sizing: border-box;
         padding: 40px;
-        margin: 20px;
         border-radius: 20px;
         background: #2F80ED;
         box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.10);
@@ -15,10 +16,12 @@
             font-size: 24px;
             font-weight: 600;
         }
+
         .wallet-balance{
             font-size: 48px;
             font-weight: 600;
         }
+
         .wallet-recharge-btn{
             font-size: 24px;
             font-weight: 600;
@@ -33,4 +36,34 @@
             transform: translateY(50%);
         }
     }
+
+    .wallet-tabs{
+        padding: 10px 20px;
+        margin: 20px 0;
+        background-color: #FFF;
+    }
+
+    .wallet-log{
+        .log-item{
+            background-color: #FFF;
+            margin-bottom: 1px;
+            padding: 20px;
+            .log-item-title{
+                font-size: 24px;
+                font-weight: 600;
+                margin-bottom: 6px;
+            }
+            .log-item-date{
+                font-size: 20px;
+                color: #ACACAC;
+            }
+            .log-item-amount{
+                font-size: 24px;
+                font-weight: 600;
+                color: #ACACAC;
+            }
+        }
+    }
+
+
 }

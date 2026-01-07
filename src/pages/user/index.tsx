@@ -1,6 +1,6 @@
 import { View, Image, Text } from '@tarojs/components'
 import { useState } from 'react'
-import { useLoad } from '@tarojs/taro'
+import { useDidShow } from '@tarojs/taro'
 import { getNavigationBarHeight } from '../../hooks/useNavigationBarHeight'
 import useUserStore from '../../stores/user-store'
 import { getDecorate } from '../../api/app'
@@ -20,7 +20,6 @@ export default function User() {
         const res = await getDecorate({ id: 2 })
         if (res.code === 1) {
             let data = JSON.parse(res.data.data);
-            console.log(data[1].content.data)
             setDecorate(data[1].content.data)
         }
     }
@@ -32,7 +31,7 @@ export default function User() {
         Taro.navigateTo({ url: path })
     }
 
-    useLoad(() => {
+    useDidShow(() => {
         console.log('User Page loaded.')
         getUserCenter()
         getDecorateFun();

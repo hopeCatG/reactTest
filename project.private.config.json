@@ -23,11 +23,25 @@
     "miniprogram": {
       "list": [
         {
-          "name": "pages/test/index",
-          "pathName": "pages/test/index",
+          "name": "pages/user_recharge/user_recharge",
+          "pathName": "pages/user_recharge/user_recharge",
           "query": "",
           "scene": null,
           "launchMode": "default"
+        },
+        {
+          "name": "pages/user_wallet/user_wallet",
+          "pathName": "pages/user_wallet/user_wallet",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/test/index",
+          "pathName": "pages/test/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         },
         {
           "name": "pages/create/image/index",

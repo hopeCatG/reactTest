@@ -11,6 +11,7 @@ export default defineAppConfig({
     'pages/user_wallet/user_wallet',
     'pages/customer_service/customer_service',
     'pages/user_set/user_set',
+    'pages/user_recharge/user_recharge',
   ], 
   permission: {
     "scope.userInfo": {

@@ -15,11 +15,11 @@ const useUserStore = create((set) => ({
   },
   getUserCenter: async () => {
     const res = await getUserCenter()
-    if (res.code === 1 && res.data?.id) {
-      set({
-        userInfo: res.data
-      })
-    } else {
+    set({
+      userInfo: res.data 
+    })
+    if (!(res.data?.id) && Taro.getStorageSync('token')) { 
+      Taro.showToast({ title: '登录过期，请重新登录', icon: 'none' });
       Taro.removeStorageSync('token')
     }
   },

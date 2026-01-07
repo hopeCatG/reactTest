@@ -14,3 +14,9 @@ export function rechargeRecord(data) {
 export function rechargeConfig() {
     return get('/recharge/config')
 }
+
+//余额明细
+export function accountLog(data) {
+    return get('/account_log/lists', data)
+}
+

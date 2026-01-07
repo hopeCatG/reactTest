@@ -1,0 +1,41 @@
+.page-container{
+    background-color: #F6F6F6;
+    height: 100vh;
+    box-sizing: border-box;
+    padding: 20rpx;
+   .recharge-content{
+        background-color: #fff;
+        padding: 40rpx;
+        border-radius: 20rpx;
+        .recharge-content-title{
+            font-size: 38rpx;
+            font-weight: bold;
+            color: #333;
+        }
+        .recharge-content-input{
+            border-bottom: 2rpx solid #E6E6E6;
+            font-size:44rpx;
+            color: #333;
+            padding: 5rpx 0;
+        }
+
+        .recharge-content-desc{
+            padding: 20rpx 0;
+            font-size: 24rpx;
+            color: #888;
+        }
+   }
+
+   .recharge-content-btn{
+        width: 100%;
+        height: 80rpx;
+        background-color: #3178F6;
+        border-radius: 40rpx;
+        font-size: 38rpx;
+        color: #fff;
+        line-height: 80rpx;
+        margin-top: 40rpx;
+   }
+
+  
+}

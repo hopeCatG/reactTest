@@ -35,6 +35,10 @@ export const request = async (options) => {
         Taro.showToast({ title: '请先登录', icon: 'none' });
         return;
       }
+      if (data.msg == '登录超时，请重新登录') {
+        Taro.removeStorageSync('token');
+      }
+
       throw new Error(data.msg || '请求失败');
     }
   } catch (error) {
