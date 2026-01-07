@@ -23,57 +23,67 @@ export default function UserRecharge() {
         getRechargeConfig()
     })
 
-
+    const [paying, setPaying] = useState(false)
     const [wallet, setWallet] = useState<any>({
         user_money: '',
         min_amount: 0
     })
-    const rechargeLock = async (e: any) => {
-        console.log(Number(wallet.user_money))
-        if (Number(wallet.user_money) < wallet.min_amount) {
-            Taro.showToast({
-                title: '充值金额不能小于' + wallet.min_amount + '积分',
-                icon: 'none'
-            })
-            return
-        }
+    const rechargeLock = async () => {
+        if (paying) return
 
-        if (Number(wallet.user_money) == 0) {
-            Taro.showToast({
-                title: '请输入充值金额',
-                icon: 'none'
-            })
-            return
-        }
+        try {
+            setPaying(true)
 
-        const { data } = await recharge({
-            money: Number(wallet.user_money),
-            order_type: 1,
-            play_type: 1,
-            title: '充值积分'
-        })
+            const amount = Number(wallet.user_money)
 
-        const prepayData = await prepay({
-            from: data.from,
-            order_id: data.order_id,
-            pay_way: 2, // 微信支付
-            redirect: "/packages/pages/recharge/recharge"
-        })
-
-        console.log(prepayData)
-
-        await Taro.requestPayment({
-            ...prepayData.data.config,
-            success() {
-                Taro.showToast({ title: '支付成功', icon: 'success' })
-            },
-            fail(err) {
-                console.error(err)
-                Taro.showToast({ title: '支付取消', icon: 'none' })
+            if (!amount) {
+                Taro.showToast({ title: '请输入充值金额', icon: 'none' })
+                return
             }
 
-        })
+            if (amount < wallet.min_amount) {
+                Taro.showToast({
+                    title: `充值金额不能小于 ${wallet.min_amount} 积分`,
+                    icon: 'none'
+                })
+                return
+            }
+
+            //  创建充值订单
+            const { data } = await recharge({
+                money: amount,
+                order_type: 1,
+                play_type: 1,
+                title: '充值积分'
+            })
+
+            // 获取微信支付参数
+            const prepayRes = await prepay({
+                from: data.from,
+                order_id: data.order_id,
+                pay_way: 2,
+                redirect: '/packages/pages/recharge/recharge'
+            })
+
+            // 拉起微信支付
+            await Taro.requestPayment({
+                ...prepayRes.data.config,
+
+                success() {
+                    Taro.showToast({ title: '支付成功', icon: 'success' })
+                },
+                fail() {
+                    Taro.showToast({ title: '支付取消', icon: 'none' })
+                }
+            })
+        } catch (err) {
+            console.error(err)
+            Taro.showToast({ title: '支付异常，请重试', icon: 'none' })
+        } finally {
+            setPaying(false)
+        }
     }
+
 
 
     return (

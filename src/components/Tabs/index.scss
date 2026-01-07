@@ -1,18 +1,18 @@
 .tabs {
     box-sizing: border-box;
-    padding: 0 40rpx;
+    padding: 10px 40px;
 
     .tab-item {
         box-sizing: border-box;
-        padding: 0 0 12rpx 0;
-        font-size: 26rpx;
+        padding: 0 0 12px 0;
+        font-size: 32px;
         color: #000;
         font-weight: bold;
-        border-bottom: 2rpx solid transparent;
+        border-bottom: 2px solid transparent;
 
         &.active {
             color: #2F80ED;
-            border-bottom: 4rpx solid #2F80ED;
+            border-bottom: 4px solid #2F80ED;
         }
     }
 }
