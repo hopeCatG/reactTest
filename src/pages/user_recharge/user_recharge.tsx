@@ -1,6 +1,6 @@
 import { View, Input, Button } from '@tarojs/components'
 import { rechargeConfig, recharge } from '../../api/recharge'
-import { getPayWay, prepay, getPayResult } from '../../api/pay'
+import { prepay } from '../../api/pay'
 import Taro from '@tarojs/taro'
 import { useLoad } from '@tarojs/taro'
 import { useState } from 'react'
@@ -8,8 +8,6 @@ import { useState } from 'react'
 import './user_recharge.scss'
 
 export default function UserRecharge() {
-
-
     const [rechargeConfigData, setRechargeConfigData] = useState<any>({})
     const getRechargeConfig = async () => {
         const { data } = await rechargeConfig()
@@ -19,6 +17,7 @@ export default function UserRecharge() {
             min_amount: data.min_amount
         })
     }
+
     useLoad(() => {
         getRechargeConfig()
     })
@@ -28,6 +27,7 @@ export default function UserRecharge() {
         user_money: '',
         min_amount: 0
     })
+
     const rechargeLock = async () => {
         if (paying) return
 
@@ -54,7 +54,7 @@ export default function UserRecharge() {
                 money: amount,
                 order_type: 1,
                 play_type: 1,
-                title: '充值积分'
+                title: '用户充值'
             })
 
             // 获取微信支付参数
@@ -71,6 +71,7 @@ export default function UserRecharge() {
 
                 success() {
                     Taro.showToast({ title: '支付成功', icon: 'success' })
+                    getRechargeConfig()
                 },
                 fail() {
                     Taro.showToast({ title: '支付取消', icon: 'none' })

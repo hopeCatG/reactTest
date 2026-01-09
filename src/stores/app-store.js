@@ -2,7 +2,7 @@ import { create } from 'zustand'
 import Taro from '@tarojs/taro'
 import { getConfig } from '../api/app'
 
-// 1. 创建 store
+
 const useAppStore = create((set) => ({
     config: null, 
     getImageUrl:  (url) => {
@@ -16,7 +16,7 @@ const useAppStore = create((set) => ({
                 config: res.data
             })
         }
-    } 
+    }
 }));
 
 export default useAppStore;
